@@ -26,7 +26,7 @@ SECRET_KEY = "django-insecure-+tu@9atroo068ap1@^ysc=o7nkb5kdpw6!@wj_b56b_a9jlfow
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['127.0.0.1', '.pythonanywhere.com', 'localhost']
+ALLOWED_HOSTS = ['127.0.0.1', '.pythonanywhere.com', 'localhost', '10.0.2.2']
 
 
 # Application definition
@@ -39,7 +39,16 @@ INSTALLED_APPS = [
     "django.contrib.messages",
     "django.contrib.staticfiles",
     'blog',
+    'rest_framework',
+    'rest_framework.authtoken',
 ]
+
+REST_FRAMEWORK = {
+    'DEFAULT_PERMISSION_CLASSES' : [
+        # 'rest_framework.permissions.IsAdminUser',
+    ],
+    'PAGE_SIZE' : 10
+}
 
 MIDDLEWARE = [
     "django.middleware.security.SecurityMiddleware",
@@ -117,13 +126,19 @@ USE_TZ = True
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/4.2/howto/static-files/
 
-STATIC_URL = "/static/"
-STATIS_ROOT = os.path.join(BASE_DIR, 'static')
+# STATIC_URL = "/static/"
+# STATIS_ROOT = os.path.join(BASE_DIR, 'static')
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/4.2/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = "django.db.models.BigAutoField"
 
-MEDIA_URL = "/media/"
-MEDIA_ROOT = BASE_DIR / "media/"
+# MEDIA_URL = "/media/"
+# MEDIA_ROOT = BASE_DIR / "media/"
+
+STATIC_URL = '/static/'
+STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
+
+MEDIA_URL = '/media/'
+MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
